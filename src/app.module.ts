@@ -8,6 +8,7 @@ import { PairsModule } from './pairs/pairs.module';
 import { LotteryModule } from './lottery/lottery.module';
 import { StatsModule } from './stats/stats.module';
 import { NfasModule } from './nfas/nfas.module';
+import { NetworkModule } from './network/network.module';
 import configuration from './config/configuration';
 
 @Module({
@@ -23,6 +24,7 @@ import configuration from './config/configuration';
     LotteryModule,
     StatsModule,
     NfasModule,
+    NetworkModule,
   ],
   controllers: [AppController],
   providers: [AppService],
