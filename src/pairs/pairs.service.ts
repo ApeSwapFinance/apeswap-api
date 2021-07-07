@@ -3,6 +3,7 @@ import { InjectModel } from '@nestjs/mongoose';
 import { Interval } from '@nestjs/schedule';
 import { Model } from 'mongoose';
 import { getRoundedDate } from 'src/utils/date';
+import { incentivizedPools } from 'src/utils/incentivizedPools';
 import { GetCandleDataDto } from './pairs.dto';
 import { poolBalance, swap } from './pairs.queries';
 import { Candle, CandleDocument } from './schema/candle.schema';
@@ -160,5 +161,14 @@ export class PairsService {
     console.log(url);
     const { data } = await this.httpService.get(url).toPromise();
     return data;
+  }
+
+  getIncentivizedPools() {
+    return incentivizedPools.map((pool) => {
+      return {
+        address: pool.address,
+        token: pool.rewardToken,
+      };
+    });
   }
 }
